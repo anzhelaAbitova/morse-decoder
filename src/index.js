@@ -44,7 +44,7 @@ function decode(expr) {
             codedMessagesArray[i] = " ";
         }
         else {
-            codedMessagesArray[i] = MORSE_TABLE[codedMessagesArray[i].replace(/^0*/, "").replace(/10/g, ".").replace(/11/g, "-")];
+            codedMessagesArray[i] = MORSE_TABLE[codedMessagesArray[i].replace(/^0+/, "").replace(/10/g, ".").replace(/11/g, "-")];
         }
     }
     return codedMessagesArray.join("");
