@@ -38,7 +38,7 @@ const MORSE_TABLE = {
 };
 
 function decode(expr) {
-    let codedMessagesArray = expr.match(/.{1,10}/g);
+    let codedMessagesArray = Array.from(expr.match(/.{1,10}/g));
     for (let i = 0; i < codedMessagesArray.length; i++) {
         if (codedMessagesArray[i] === "**********") { 
             codedMessagesArray[i] = " ";
@@ -48,8 +48,6 @@ function decode(expr) {
         }
     }
     return codedMessagesArray.join("");
-}
-
 }
 
 module.exports = {
