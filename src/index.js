@@ -38,16 +38,11 @@ const MORSE_TABLE = {
 };
 
 function decode(expr) {
-    let codedMessagesArray = Array.from(expr.match(/.{1,10}/g));
-    for (let i = 0; i < codedMessagesArray.length; i++) {
-        if (codedMessagesArray[i] === "**********") { 
-            codedMessagesArray[i] = " ";
-        }
-        else {
-            codedMessagesArray[i] = MORSE_TABLE[codedMessagesArray[i].replace(/^0*/, "").replace(/10/g, ".").replace(/11/g, "-")];
-        }
+    let arr = [...(expr.match(/.{1,10}/g))];
+    for (let i = 0; i < arr.length; i++) {
+        arr[i] = (arr[i] === "**********") ? arr[i] = " " :  arr[i] = MORSE_TABLE[arr[i].replace(/^0*/, "").replace(/10/g, ".").replace(/11/g, "-")];
     }
-    return codedMessagesArray.join("");
+    return arr.join("");
 }
 
 module.exports = {
